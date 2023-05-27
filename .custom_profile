@@ -1,0 +1,102 @@
+#  ---------------------------------------------------------------------------
+#
+#  Description:  This file holds all my BASH configurations and aliases
+#
+#  Sections:
+#  1.  Environment Configuration
+#  2.  Make Terminal Better (remapping defaults and adding functionality)
+#  3.  Native .bashrc configuration
+#  4.  Functions
+#  ---------------------------------------------------------------------------
+
+
+#   -------------------------------
+#   1. ENVIRONMENT CONFIGURATION
+#   ------------------------------
+#   Set Paths
+#   ------------------------------------------------------------
+    #  C:\Program Files\Java\jdk-13.0.2\bin
+    export JAVA_HOME="/mnt/c/Program Files/Java/jdk-13.0.2/bin"
+    export AWS_COMPLETER="/usr/local/bin/aws_completer"
+    # export JAVA_HOME="/usr/lib/jvm/java-13-openjdk-amd64"
+    export JENV_BIN="/mnt/c/Users/ivanf/.jenv/bin"
+    export PATH="$HOME/bin:$HOME/.local/bin:/home/ifx/development-libs/flutter/bin:$JENV_BIN:/home/ifx/development-libs/android-studio/bin:$AWS_COMPLETER:$PATH"
+    export EDITOR="vim"
+
+#   Set Default Editor (change 'Nano' to the editor of your choice)
+#   ------------------------------------------------------------
+#    export EDITOR=/usr/bin/nano
+
+#   Set default blocksize for ls, df, du
+#   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
+#   ------------------------------------------------------------
+    export BLOCKSIZE=1k
+
+#   Add color to terminal
+#   (this is all commented out as I use Mac Terminal Profiles)
+#   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
+#   ------------------------------------------------------------
+#   export CLICOLOR=1
+#   export LSCOLORS=ExFxBxDxCxegedabagacad
+
+#   -----------------------------
+#   2. MAKE TERMINAL BETTER
+#   -----------------------------
+
+alias ~="cd ~"                              # ~:            Go Home
+#alias bashrc='code ~/.bashrc'
+#alias bashprofile='code ~/.profile ~/.bashrc'
+alias c='clear'                             # c:            Clear terminal display
+cd() { builtin cd "$@"; ls -FGlAhp; }       # Always list directory contents upon 'cd'
+alias cd-win10-ivan="cd /mnt/c/Users/ivanf/"
+#alias cdev='cd ~/dev-ws'
+#alias cdec='cd /mnt/c/Users/ivanf/eclipse-workspace'
+#alias cdeco='cd /mnt/c/Users/ivanf/other-workspace'
+#alias cdng='cd /mnt/c/Users/ivanf/ng-workspace'
+#alias cdoc='cd /mnt/c/Users/ivanf/Documents'
+#alias cdpy='cd /mnt/c/Users/ivanf/PycharmProjects'
+#alias cdsk='cd /mnt/c/Users/ivanf/Desktop'
+#alias cdwn='cd /mnt/c/Users/ivanf/Downloads'
+alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
+alias ..='cd ../'                           # Go back 1 directory level
+alias ...='cd ../../'                       # Go back 2 directory levels
+alias .2='cd ../../'                       # Go back 2 directory levels
+alias .3='cd ../../../'                     # Go back 3 directory levels
+alias .4='cd ../../../../'                  # Go back 4 directory levels
+alias .5='cd ../../../../../'               # Go back 5 directory levels
+alias .6='cd ../../../../../../'            # Go back 6 directory levels
+alias DT='tee ~/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
+alias gist='git branch && printf "\n" &&  git status'
+alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
+mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
+alias mci='mvn clean install'
+alias nightmode='redshift-gtk'
+alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
+#alias f='nohup nautilus . > /dev/null &'
+alias android-studio="sudo /home/ifx/development-libs/android-studio/bin/studio.sh"
+# alias f='nautilus . >/dev/null 2>&1'/
+alias o='nautilus .'
+# alias open='nautilus . >/dev/null 2>&1'
+alias refresh='source ~/.bashrc && source ~/.profile'
+# alias test='echo "source ~/.bashrc ~/.profile"'
+compile-typescript-and-execute () { npx tsc "$@".ts  && node "$@".js; }
+#docker aliases
+alias docker='sudo docker'
+alias dils='docker image ls'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+
+#java versions
+# https://askubuntu.com/questions/740757/switch-between-multiple-java-versions#740782
+alias set-java8='sudo update-java-alternatives --set /usr/lib/jvm/java-1.8.0-openjdk-amd64'
+alias set-java13='sudo update-java-alternatives --set /usr/lib/jvm/java-1.13.0-openjdk-amd64'
+
+#git aliases
+gist='git branch && printf "\n\n" && git status'
+alias cp='cp -iv'                           # Preferred 'cp' implementation
+alias mv='mv -iv'                           # Preferred 'mv' implementation
+alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
+alias less='less -FSRXc'                    # Preferred 'less' implementation
+alias which='type -all'                     # which:        Find executables
+alias show_options='shopt'                  # Show_options: display bash options settings
+alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up-
