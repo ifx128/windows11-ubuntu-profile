@@ -67,6 +67,7 @@ alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias DT='tee ~/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
 alias gist='git branch && printf "\n" &&  git status'
+alias grvv='git remote -vv'
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
 mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
 alias mci='mvn clean install'
